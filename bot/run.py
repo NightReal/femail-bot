@@ -119,9 +119,9 @@ def encode_obj(obj):
     return m.encode()
 
 
-def decode_obj(bytes):
+def decode_obj(bts):
     d = {}
-    for s in bytes.decode().split(','):
+    for s in bts.decode().split(','):
         k, v = s.split(':')
         if v.isdigit():
             v = int(v)
