@@ -3,7 +3,7 @@ import os
 from backend import db
 import logging
 import re
-import email_handler
+from . import email_handler
 import hashlib
 
 
@@ -134,15 +134,15 @@ async def show_manage_email(event, hsh, email):
     receive_data = {'cmd': CMD.MANAGE_TOGGLE, 'hash': hsh}
     bwlist_text = 'Use blacklist' if email['useblack'] else 'Use whitelist'
     bwlist_data = {'cmd': CMD.MANAGE_BWLIST, 'hash': hsh}
-    
+
     black_masks_count = len(email['blacklist'])
     bshow_text = f'Show blacklist ({black_masks_count} mask{"s" if black_masks_count != 1 else ""})'
     bshow_data = {'cmd': CMD.MANAGE_SHOW, 'hash': hsh, 'black': 1}
-    
+
     white_masks_count = len(email['whitelist'])
     wshow_text = f'Show whitelist ({white_masks_count} mask{"s" if white_masks_count != 1 else ""})'
     wshow_data = {'cmd': CMD.MANAGE_SHOW, 'hash': hsh, 'black': 0}
-    
+
     back_text = '⬅️ Back'
     back_data = {'cmd': CMD.MANAGE_BACK}
 
